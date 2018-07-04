@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Rx Adapter Params",
+  "description": "A schema which validates params accepted by the Rx adapter",
+
+  "type": "object",
+  "properties": {
+    "adspotId": {
+      "type": "string",
+      "description": "The ad spot id."
+    },
+    "adType": {
+      "type": "integer",
+      "description": "The ad type.",
+      "pattern": "^[0-9]+$"
+    },
+    "sequence": {
+      "type": "integer",
+      "description": "",
+      "pattern": "^[0-9]+$"
+    },
+    "cachebuster": {
+      "type": "integer",
+      "description": "The cachebuster.",
+      "pattern": "^[0-9]+$"
+    },
+    "sdkVersion": {
+      "type": "string",
+      "description": "The sdk version."
+    },
+    "mediaUrl": {
+      "type": "string",
+      "description": "The media url."
+    },
+    "customParams": {
+      "type": "object",
+      "description": "User-defined targeting key-value pairs."
+    }
+  },
+
+  "required": ["adspotId", "adType"]
+}

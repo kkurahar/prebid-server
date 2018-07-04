@@ -56,6 +56,7 @@ import (
 	"github.com/prebid/prebid-server/ssl"
 	storedRequestsConf "github.com/prebid/prebid-server/stored_requests/config"
 
+	"github.com/prebid/prebid-server/adapters/rx"
 	usersyncers "github.com/prebid/prebid-server/usersync"
 )
 
@@ -742,6 +743,8 @@ func init() {
 	viper.SetDefault("adapters.sovrn.usersync_url", "//ap.lijit.com/pixel?")
 	viper.SetDefault("adapters.adform.endpoint", "http://adx.adform.net/adx")
 	viper.SetDefault("adapters.adform.usersync_url", "//cm.adform.net/cookie?redirect_url=")
+	// TODO FIXME
+	viper.SetDefault("adapters.rx.endpoint", "http://localhost:5000/ortb1")
 	viper.SetDefault("max_request_size", 1024*256)
 	viper.SetDefault("adapters.conversant.endpoint", "http://media.msg.dotomi.com/s2s/header/24")
 	viper.SetDefault("adapters.conversant.usersync_url", "http://prebid-match.dotomi.com/prebid/match?rurl=")
@@ -782,6 +785,7 @@ func newExchangeMap(cfg *config.Configuration) map[string]adapters.Adapter {
 		"conversant":      conversant.NewConversantAdapter(adapters.DefaultHTTPAdapterConfig, cfg.Adapters["conversant"].Endpoint),
 		"adform":          adform.NewAdformAdapter(adapters.DefaultHTTPAdapterConfig, cfg.Adapters["adform"].Endpoint),
 		"sovrn":           sovrn.NewSovrnAdapter(adapters.DefaultHTTPAdapterConfig, cfg.Adapters["sovrn"].Endpoint),
+		"rx":              rx.NewRxAdapter(adapters.DefaultHTTPAdapterConfig, cfg.Adapters["rx"].Endpoint),
 	}
 }
 

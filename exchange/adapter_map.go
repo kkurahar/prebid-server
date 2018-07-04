@@ -16,6 +16,7 @@ import (
 	"github.com/prebid/prebid-server/adapters/pubmatic"
 	"github.com/prebid/prebid-server/adapters/pulsepoint"
 	"github.com/prebid/prebid-server/adapters/rubicon"
+	"github.com/prebid/prebid-server/adapters/rx"
 	"github.com/prebid/prebid-server/adapters/sovrn"
 	"github.com/prebid/prebid-server/config"
 	"github.com/prebid/prebid-server/openrtb_ext"
@@ -46,5 +47,6 @@ func newAdapterMap(client *http.Client, cfg *config.Configuration) map[openrtb_e
 		openrtb_ext.BidderAdform:      adaptBidder(adform.NewAdformBidder(client, cfg.Adapters["adform"].Endpoint), client),
 		openrtb_ext.BidderSovrn:       adaptBidder(sovrn.NewSovrnBidder(client, cfg.Adapters["sovrn"].Endpoint), client),
 		openrtb_ext.BidderEPlanning:   adaptBidder(eplanning.NewEPlanningBidder(client, cfg.Adapters["eplanning"].Endpoint), client),
+		openrtb_ext.BidderRx:          adaptBidder(rx.NewRxBidder(client, cfg.Adapters["rx"].Endpoint), client),
 	}
 }
